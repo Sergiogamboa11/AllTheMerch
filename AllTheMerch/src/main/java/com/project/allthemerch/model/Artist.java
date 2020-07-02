@@ -22,20 +22,25 @@ public class Artist {
 	@Column
 	private String artistDescription;
 	
+	@Column
+	private String artistImage;
+	
 	public Artist() {
 	}
 
-	public Artist(int artistId, String artistName, String artistDescription) {
+	public Artist(int artistId, String artistName, String artistDescription, String artistImage) {
 		super();
 		this.artistId = artistId;
 		this.artistName = artistName;
 		this.artistDescription = artistDescription;
+		this.artistImage = artistImage;
 	}
-	
-	public Artist(String artistName, String artistDescription) {
+
+	public Artist(String artistName, String artistDescription, String artistImage) {
 		super();
 		this.artistName = artistName;
 		this.artistDescription = artistDescription;
+		this.artistImage = artistImage;
 	}
 
 	public int getArtistId() {
@@ -62,11 +67,18 @@ public class Artist {
 		this.artistDescription = artistDescription;
 	}
 
+	public String getArtistImage() {
+		return artistImage;
+	}
+
+	public void setArtistImage(String artistImage) {
+		this.artistImage = artistImage;
+	}
 
 	@Override
 	public String toString() {
 		return "Artist [artistId=" + artistId + ", artistName=" + artistName + ", artistDescription="
-				+ artistDescription + "]";
+				+ artistDescription + ", artistImage=" + artistImage + "]";
 	}
 	
 }
