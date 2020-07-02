@@ -49,8 +49,13 @@ public class ArtistController {
 	}
 	
 	@PutMapping("/{id}")
-	public @ResponseBody Artist putArtist(@RequestBody Artist artist) {
-		return artistService.save(artist);
+	public @ResponseBody ResponseEntity<Artist> putArtist(@RequestBody Artist artist, @PathVariable(value = "id") int artistId) {
+		System.out.println(artist.getArtistId());
+		if(artist.getArtistId() > 0 && artist.getArtistId() != artistId) {
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
+		artist.setArtistId(artistId);
+		return new ResponseEntity<>(artistService.save(artist), HttpStatus.OK);
 	}
 	
 }
