@@ -17,10 +17,10 @@ import javax.persistence.Table;
 public class Item {
 	
 	@Id
+	@Column(name = "item_id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int itemId;
 	
-	//link to artist
 	@OneToOne (fetch = FetchType.LAZY)
 	@JoinColumn(name="artist_id")
 	private Artist artist;
