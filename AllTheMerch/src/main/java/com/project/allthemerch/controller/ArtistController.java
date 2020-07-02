@@ -3,9 +3,12 @@ package com.project.allthemerch.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,7 +20,7 @@ import com.project.allthemerch.model.Artist;
 import com.project.allthemerch.service.ArtistService;
 
 @RestController
-@RequestMapping("/artist")
+@RequestMapping("/api/artists")
 @CrossOrigin
 public class ArtistController {
 	
@@ -26,6 +29,7 @@ public class ArtistController {
 	
 	@PostMapping
 	public @ResponseBody Artist createArtist(@RequestBody Artist artist) {
+		artist.setArtistId(0);
 		return artistService.save(artist);
 	}
 	
@@ -34,12 +38,17 @@ public class ArtistController {
 		return artistService.findAll();
 	}
 	
-	@DeleteMapping
+	@GetMapping("/{id}") 
+	public @ResponseBody Artist getArtistById(@PathVariable(value = "id") int artistId) {
+		return artistService.findByArtistId(artistId);
+	}
+	
+	@DeleteMapping("/{id}")
 	public @ResponseBody void deleteArtist(@RequestBody int id) {
 		artistService.delete(id);
 	}
 	
-	@PutMapping
+	@PutMapping("/{id}")
 	public @ResponseBody Artist putArtist(@RequestBody Artist artist) {
 		return artistService.save(artist);
 	}
