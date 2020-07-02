@@ -44,8 +44,8 @@ public class ArtistController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public @ResponseBody void deleteArtist(@RequestBody int id) {
-		artistService.delete(id);
+	public @ResponseBody void deleteArtist(@PathVariable(value = "id") int artistId) {
+		artistService.delete(artistId);
 	}
 	
 	@PutMapping("/{id}")
