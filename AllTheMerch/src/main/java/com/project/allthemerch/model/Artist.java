@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class Artist {
 
 	@Id
-//	@Column(name = "artist_id") This generates the same attribute name based on variable's camel case syntax whether I keep this or not
+	@Column(name = "artist_id") //This generates the same attribute name based on variable's camel case syntax whether I keep this or not
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int artistId;
 	
