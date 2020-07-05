@@ -9,8 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,9 +21,9 @@ public class CartItems {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int cartItemsId;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="cart_id")
-	private Customer customer;
+	private Cart cart;
 	
 	@OneToMany (fetch=FetchType.LAZY)
 	@JoinColumn(name="item_id")
@@ -39,13 +39,13 @@ public class CartItems {
 	public void setCartItemsId(int cartItemsId) {
 		this.cartItemsId = cartItemsId;
 	}
-
-	public Customer getCustomer() {
-		return customer;
+	
+	public Cart getCart() {
+		return cart;
 	}
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
+	public void setCart(Cart cart) {
+		this.cart = cart;
 	}
 
 	public List<Item> getItem() {
@@ -64,25 +64,25 @@ public class CartItems {
 		this.quantity = quantity;
 	}
 
-	public CartItems(int cartItemsId, Customer customer, List<Item> item, int quantity) {
+	public CartItems(int cartItemsId, Cart cart, List<Item> item, int quantity) {
 		super();
 		this.cartItemsId = cartItemsId;
-		this.customer = customer;
+		this.cart = cart;
 		this.item = item;
 		this.quantity = quantity;
 	}
-	
-	public CartItems(Customer customer, List<Item> item, int quantity) {
+
+	public CartItems(Cart cart, List<Item> item, int quantity) {
 		super();
-		this.customer = customer;
+		this.cart = cart;
 		this.item = item;
 		this.quantity = quantity;
 	}
 
 	@Override
 	public String toString() {
-		return "CartItems [cartItemsId=" + cartItemsId + ", customer=" + customer + ", item=" + item + ", quantity="
-				+ quantity + "]";
+		return "CartItems [cartItemsId=" + cartItemsId + ", cart=" + cart + ", item=" + item + ", quantity=" + quantity
+				+ "]";
 	}
 	
 }
