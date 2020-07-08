@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "AllTheMerch": {
+    "AllTheMerchFrontEnd": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/AllTheMerch",
+            "outputPath": "dist/AllTheMerchFrontEnd",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -62,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "AllTheMerch:build"
+            "browserTarget": "AllTheMerchFrontEnd:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "AllTheMerch:build:production"
+              "browserTarget": "AllTheMerchFrontEnd:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "AllTheMerch:build"
+            "browserTarget": "AllTheMerchFrontEnd:build"
           }
         },
         "test": {
@@ -110,15 +110,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "AllTheMerch:serve"
+            "devServerTarget": "AllTheMerchFrontEnd:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "AllTheMerch:serve:production"
+              "devServerTarget": "AllTheMerchFrontEnd:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "AllTheMerch"
+  "defaultProject": "AllTheMerchFrontEnd"
 }
