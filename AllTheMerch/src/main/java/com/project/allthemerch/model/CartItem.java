@@ -14,12 +14,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Cart_Items")
-public class CartItems {
+@Table(name = "Cart_Item")
+public class CartItem {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int cartItemsId;
+	private int cartItemId;
 	
 	@ManyToOne
 	@JoinColumn(name="cart_id")
@@ -32,12 +32,12 @@ public class CartItems {
 	@Column
 	private int quantity;
 
-	public int getCartItemsId() {
-		return cartItemsId;
+	public int getCartItemId() {
+		return cartItemId;
 	}
 
-	public void setCartItemsId(int cartItemsId) {
-		this.cartItemsId = cartItemsId;
+	public void setCartItemId(int cartItemId) {
+		this.cartItemId = cartItemId;
 	}
 	
 	public Cart getCart() {
@@ -64,15 +64,15 @@ public class CartItems {
 		this.quantity = quantity;
 	}
 
-	public CartItems(int cartItemsId, Cart cart, List<Item> item, int quantity) {
+	public CartItem(int cartItemId, Cart cart, List<Item> item, int quantity) {
 		super();
-		this.cartItemsId = cartItemsId;
+		this.cartItemId = cartItemId;
 		this.cart = cart;
 		this.item = item;
 		this.quantity = quantity;
 	}
 
-	public CartItems(Cart cart, List<Item> item, int quantity) {
+	public CartItem(Cart cart, List<Item> item, int quantity) {
 		super();
 		this.cart = cart;
 		this.item = item;
@@ -81,7 +81,7 @@ public class CartItems {
 
 	@Override
 	public String toString() {
-		return "CartItems [cartItemsId=" + cartItemsId + ", cart=" + cart + ", item=" + item + ", quantity=" + quantity
+		return "CartItem [cartItemId=" + cartItemId + ", cart=" + cart + ", item=" + item + ", quantity=" + quantity
 				+ "]";
 	}
 	
