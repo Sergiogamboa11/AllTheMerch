@@ -22,7 +22,7 @@ public class PurchaseItems {
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="purchase_id")
-	private Purchases purchases;
+	private Purchase purchase;
 	
 	@OneToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="item_id")
@@ -38,16 +38,16 @@ public class PurchaseItems {
 		
 	}
 
-	public PurchaseItems(int purchaseItemsId, Purchases purchases, Item item, int quantity, double purchase_price) {
+	public PurchaseItems(int purchaseItemsId, Purchase purchase, Item item, int quantity, double purchase_price) {
 		this.purchaseItemsId = purchaseItemsId;
-		this.purchases = purchases;
+		this.purchase = purchase;
 		this.item = item;
 		this.quantity = quantity;
 		this.purchase_price = purchase_price;
 	}
 	
-	public PurchaseItems(Purchases purchases, Item item, int quantity, double purchase_price) {
-		this.purchases = purchases;
+	public PurchaseItems(Purchase purchase, Item item, int quantity, double purchase_price) {
+		this.purchase = purchase;
 		this.item = item;
 		this.quantity = quantity;
 		this.purchase_price = purchase_price;
@@ -61,12 +61,12 @@ public class PurchaseItems {
 		this.purchaseItemsId = purchaseItemsId;
 	}
 
-	public Purchases getPurchases() {
-		return purchases;
+	public Purchase getPurchases() {
+		return purchase;
 	}
 
-	public void setPurchases(Purchases purchases) {
-		this.purchases = purchases;
+	public void setPurchases(Purchase purchase) {
+		this.purchase = purchase;
 	}
 
 	public Item getItem() {
@@ -95,7 +95,7 @@ public class PurchaseItems {
 
 	@Override
 	public String toString() {
-		return "PurchaseItems [purchaseItemsId=" + purchaseItemsId + ", purchases=" + purchases + ", item=" + item
+		return "PurchaseItems [purchaseItemsId=" + purchaseItemsId + ", purchase=" + purchase + ", item=" + item
 				+ ", quantity=" + quantity + ", purchase_price=" + purchase_price + "]";
 	}
 	

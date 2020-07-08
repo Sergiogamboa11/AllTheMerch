@@ -13,13 +13,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="purchases")
-public class Purchases {
+@Table(name="purchase")
+public class Purchase {
 
 	@Id 
 	@Column(name="purchase_id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int purcahseId;
+	private int purchaseId;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "customer_id")
@@ -28,29 +28,29 @@ public class Purchases {
 	@Column(name="purchase_date")
 	private Date purchaseDate;
 
-	public Purchases() {
+	public Purchase() {
 		
 	}
 
-	public Purchases(int purcahseId, Customer customer, Date purchaseDate) {
+	public Purchase(int purchaseId, Customer customer, Date purchaseDate) {
 		super();
-		this.purcahseId = purcahseId;
+		this.purchaseId = purchaseId;
 		this.customer = customer;
 		this.purchaseDate = purchaseDate;
 	}
 	
-	public Purchases(Customer customer, Date purchaseDate) {
+	public Purchase(Customer customer, Date purchaseDate) {
 		super();
 		this.customer = customer;
 		this.purchaseDate = purchaseDate;
 	}
 
-	public int getPurcahseId() {
-		return purcahseId;
+	public int getPurchaseId() {
+		return purchaseId;
 	}
 
-	public void setPurcahseId(int purcahseId) {
-		this.purcahseId = purcahseId;
+	public void setPurchaseId(int purchaseId) {
+		this.purchaseId = purchaseId;
 	}
 
 	public Customer getCustomer() {
@@ -71,7 +71,7 @@ public class Purchases {
 
 	@Override
 	public String toString() {
-		return "Purchases [purcahseId=" + purcahseId + ", purchaseDate=" + purchaseDate + "]";
+		return "Purchase [purchaseId=" + purchaseId + ", purchaseDate=" + purchaseDate + "]";
 	}
 		
 }
