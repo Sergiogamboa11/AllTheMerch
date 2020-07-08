@@ -21,9 +21,9 @@ import com.project.allthemerch.model.CartItem;
 import com.project.allthemerch.service.CartItemService;
 
 @RestController
-@RequestMapping("/api/cartitems")
+@RequestMapping("/api/cartitem")
 @CrossOrigin
-public class CartItemsController {
+public class CartItemController {
 
 	@Autowired
 	private CartItemService cartItemService;
