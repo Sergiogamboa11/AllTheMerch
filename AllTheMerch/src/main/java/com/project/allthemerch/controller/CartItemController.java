@@ -16,12 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.allthemerch.model.Artist;
 import com.project.allthemerch.model.CartItem;
 import com.project.allthemerch.service.CartItemService;
 
 @RestController
-@RequestMapping("/api/cartitem")
+@RequestMapping("/api/cartitems")
 @CrossOrigin
 public class CartItemController {
 
@@ -35,7 +34,7 @@ public class CartItemController {
 	}
 	
 	@GetMapping
-	public @ResponseBody List<CartItem> getCartItem(){
+	public @ResponseBody List<CartItem> getCartItems(){
 		return cartItemService.findAll();
 	}
 	
