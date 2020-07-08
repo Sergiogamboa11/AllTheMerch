@@ -12,13 +12,13 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "purchase_items")
-public class PurchaseItems {
+@Table(name = "purchase_item")
+public class PurchaseItem {
 
 	@Id
-	@Column(name="purchase_items_id")
+	@Column(name="purchase_item_id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int purchaseItemsId;
+	private int purchaseItemId;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="purchase_id")
@@ -34,31 +34,31 @@ public class PurchaseItems {
 	@Column(name="purchase_price")
 	private double purchase_price;
 
-	public PurchaseItems() {
+	public PurchaseItem() {
 		
 	}
 
-	public PurchaseItems(int purchaseItemsId, Purchase purchase, Item item, int quantity, double purchase_price) {
-		this.purchaseItemsId = purchaseItemsId;
+	public PurchaseItem(int purchaseItemId, Purchase purchase, Item item, int quantity, double purchase_price) {
+		this.purchaseItemId = purchaseItemId;
 		this.purchase = purchase;
 		this.item = item;
 		this.quantity = quantity;
 		this.purchase_price = purchase_price;
 	}
 	
-	public PurchaseItems(Purchase purchase, Item item, int quantity, double purchase_price) {
+	public PurchaseItem(Purchase purchase, Item item, int quantity, double purchase_price) {
 		this.purchase = purchase;
 		this.item = item;
 		this.quantity = quantity;
 		this.purchase_price = purchase_price;
 	}
 
-	public int getPurchaseItemsId() {
-		return purchaseItemsId;
+	public int getPurchaseItemId() {
+		return purchaseItemId;
 	}
 
-	public void setPurchaseItemsId(int purchaseItemsId) {
-		this.purchaseItemsId = purchaseItemsId;
+	public void setPurchaseItemId(int purchaseItemId) {
+		this.purchaseItemId = purchaseItemId;
 	}
 
 	public Purchase getPurchases() {
@@ -95,7 +95,7 @@ public class PurchaseItems {
 
 	@Override
 	public String toString() {
-		return "PurchaseItems [purchaseItemsId=" + purchaseItemsId + ", purchase=" + purchase + ", item=" + item
+		return "PurchaseItem [purchaseItemId=" + purchaseItemId + ", purchase=" + purchase + ", item=" + item
 				+ ", quantity=" + quantity + ", purchase_price=" + purchase_price + "]";
 	}
 	

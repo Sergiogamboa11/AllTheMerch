@@ -3,10 +3,12 @@ package com.project.allthemerch.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.project.allthemerch.model.CartItem;
 import com.project.allthemerch.repo.CartItemDao;
 
+@Service
 public class CartItemService {
 
 	@Autowired
