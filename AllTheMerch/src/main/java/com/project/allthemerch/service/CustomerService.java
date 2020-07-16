@@ -29,4 +29,8 @@ public class CustomerService {
 	public Customer findByCustomerId(int id) {
 		return customerDao.findById(id);
 	}
+	
+	public Customer findByCustomerUsernameAndPassword(String username, String password) {
+		return customerDao.findByUsernameAndPassword(username, password);
+	}
 }

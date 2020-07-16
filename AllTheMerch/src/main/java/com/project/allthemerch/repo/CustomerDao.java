@@ -13,4 +13,5 @@ public interface CustomerDao extends CrudRepository<Customer, Integer>{
 	public List<Customer> findAll();
 	public void deleteByCustomerId(int id);
 	public Customer findById(int id);
+	public Customer findByUsernameAndPassword(String username, String password);
 }

@@ -39,6 +39,9 @@ public class Customer {
 	
 	@Column
 	private int zip;
+	
+	public Customer() {
+	}
 
 	public Customer(int customerId, String username, String password, String email, String firstName, String lastName,
 			String address, String state, int zip) {
