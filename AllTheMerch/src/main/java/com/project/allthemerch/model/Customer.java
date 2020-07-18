@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -13,7 +14,13 @@ public class Customer {
 
 	@Id
 	@Column(name = "customer_id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.TABLE,
+	generator = "customer_seq"
+	)
+	@SequenceGenerator(
+	    name = "customer_seq",
+	    initialValue=3
+	)
 	private int customerId;
 	
 	@Column
