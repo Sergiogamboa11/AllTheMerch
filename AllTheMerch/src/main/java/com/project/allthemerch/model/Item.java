@@ -38,12 +38,15 @@ public class Item {
 	private String description;
 	
 	@Column
+	private String image;
+	
+	@Column
 	private double price;
 	
 	public Item() {
 	}
 
-	public Item(int itemId, Artist artist, String type, int stock, LocalDate restockDate, String description,
+	public Item(int itemId, Artist artist, String type, int stock, LocalDate restockDate, String description, String image,
 			double price) {
 		super();
 		this.itemId = itemId;
@@ -52,16 +55,19 @@ public class Item {
 		this.stock = stock;
 		this.restockDate = restockDate;
 		this.description = description;
+		this.image = image;
 		this.price = price;
 	}
 	
-	public Item(Artist artist, String type, int stock, LocalDate restockDate, String description, double price) {
+	public Item(Artist artist, String type, int stock, LocalDate restockDate, String description, String image,
+			double price) {
 		super();
 		this.artist = artist;
 		this.type = type;
 		this.stock = stock;
 		this.restockDate = restockDate;
 		this.description = description;
+		this.image = image;
 		this.price = price;
 	}
 
@@ -113,6 +119,14 @@ public class Item {
 		this.description = description;
 	}
 
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	public double getPrice() {
 		return price;
 	}
@@ -124,7 +138,8 @@ public class Item {
 	@Override
 	public String toString() {
 		return "Item [itemId=" + itemId + ", artist=" + artist + ", type=" + type + ", stock=" + stock
-				+ ", restockDate=" + restockDate + ", description=" + description + ", price=" + price + "]";
+				+ ", restockDate=" + restockDate + ", description=" + description + ", image=" + image + ", price="
+				+ price + "]";
 	}
 	
 }

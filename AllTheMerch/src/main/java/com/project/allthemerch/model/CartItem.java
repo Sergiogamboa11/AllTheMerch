@@ -4,13 +4,12 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -25,9 +24,9 @@ public class CartItem {
 	@JoinColumn(name="cart_id")
 	private Cart cart;
 	
-	@OneToMany (fetch=FetchType.LAZY)
-	@JoinColumn(name="item_id")
-	private List<Item> item;
+	@OneToOne
+	@JoinColumn(name = "item_id")
+	private Item item;
 	
 	@Column
 	private int quantity;
@@ -48,11 +47,11 @@ public class CartItem {
 		this.cart = cart;
 	}
 
-	public List<Item> getItem() {
+	public Item getItem() {
 		return item;
 	}
 
-	public void setItem(List<Item> item) {
+	public void setItem(Item item) {
 		this.item = item;
 	}
 
@@ -64,7 +63,7 @@ public class CartItem {
 		this.quantity = quantity;
 	}
 
-	public CartItem(int cartItemId, Cart cart, List<Item> item, int quantity) {
+	public CartItem(int cartItemId, Cart cart, Item item, int quantity) {
 		super();
 		this.cartItemId = cartItemId;
 		this.cart = cart;
@@ -72,7 +71,7 @@ public class CartItem {
 		this.quantity = quantity;
 	}
 
-	public CartItem(Cart cart, List<Item> item, int quantity) {
+	public CartItem(Cart cart, Item item, int quantity) {
 		super();
 		this.cart = cart;
 		this.item = item;

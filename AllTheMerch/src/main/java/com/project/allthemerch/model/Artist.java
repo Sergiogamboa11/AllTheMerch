@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -13,7 +14,13 @@ public class Artist {
 
 	@Id
 	@Column(name = "artist_id")
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,
+			generator = "artist_seq"
+			)
+	@SequenceGenerator(
+		    name = "artist_seq",
+		    initialValue=3
+		)
 	private int artistId;
 	
 	@Column 
