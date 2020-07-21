@@ -21,9 +21,12 @@ public class Item {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int itemId;
 	
-	@OneToOne (fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name="artist_id")
 	private Artist artist;
+	
+	@Column
+	private String name;
 	
 	@Column
 	private String type;
@@ -46,11 +49,12 @@ public class Item {
 	public Item() {
 	}
 
-	public Item(int itemId, Artist artist, String type, int stock, LocalDate restockDate, String description, String image,
+	public Item(int itemId, Artist artist, String name, String type, int stock, LocalDate restockDate, String description, String image,
 			double price) {
 		super();
 		this.itemId = itemId;
 		this.artist = artist;
+		this.name = name;
 		this.type = type;
 		this.stock = stock;
 		this.restockDate = restockDate;
@@ -59,10 +63,11 @@ public class Item {
 		this.price = price;
 	}
 	
-	public Item(Artist artist, String type, int stock, LocalDate restockDate, String description, String image,
+	public Item(Artist artist, String name, String type, int stock, LocalDate restockDate, String description, String image,
 			double price) {
 		super();
 		this.artist = artist;
+		this.name = name;
 		this.type = type;
 		this.stock = stock;
 		this.restockDate = restockDate;
@@ -85,6 +90,14 @@ public class Item {
 
 	public void setArtist(Artist artist) {
 		this.artist = artist;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getType() {
@@ -137,9 +150,9 @@ public class Item {
 
 	@Override
 	public String toString() {
-		return "Item [itemId=" + itemId + ", artist=" + artist + ", type=" + type + ", stock=" + stock
-				+ ", restockDate=" + restockDate + ", description=" + description + ", image=" + image + ", price="
-				+ price + "]";
+		return "Item [itemId=" + itemId + ", artist=" + artist + ", name=" + name + ", type=" + type + ", stock="
+				+ stock + ", restockDate=" + restockDate + ", description=" + description + ", image=" + image
+				+ ", price=" + price + "]";
 	}
-	
+
 }
