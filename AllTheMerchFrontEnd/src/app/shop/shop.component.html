@@ -37,10 +37,10 @@
 
 <div [ngbNavOutlet]="nav" class="mt-2"></div>
 
-<div style="display: flex;">
+<div class="item-container">
   <div *ngFor="let item of items">
     <button class="button">
-      <img [src]="item.image" height="400" width="400">
+      <img [src]="item.image" height="300em" width="300em">
       <p>{{item.name}}</p>
       <p>{{item.price}}</p>
     </button>
