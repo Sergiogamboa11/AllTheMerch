@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-item-listing',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ItemListingComponent implements OnInit {
 
-  constructor() { }
+  public itemId;
+  public item;
 
-  ngOnInit(): void {
+  constructor(private router: Router, private http: HttpClient) { }
+
+  ngOnInit(){
+    this.itemId = this.router.url.substring(this.router.url.lastIndexOf('/') + 1);
+    this.getShopItem();
+  }
+
+  getShopItem(){
+    this.http.get('http://localhost:9025/api/items/' + this.itemId).toPromise().then(data => {
+      if(data == null || data == undefined){
+      } else{
+        this.item = data;
+        console.log(this.item);
+      }
+    });
   }
 
 }

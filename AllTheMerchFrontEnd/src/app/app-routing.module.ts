@@ -9,7 +9,10 @@ import { MerchComponent } from './merch/merch.component';
 
 const routes: Routes = [
   {path: 'shop', component: ShopComponent, children:[
-    {path: 'item', component: ItemListingComponent},
+    {path: 'item', component: ItemListingComponent, children:[
+      {path: '', component:ShopComponent},
+      {path: '**', component:ShopComponent}
+    ]},
     {path: 'merch', component: MerchComponent},
     {path: '', component: MerchComponent}, 
     {path: '**', component: MerchComponent}

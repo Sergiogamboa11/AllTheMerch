@@ -38,6 +38,11 @@ public class ItemController {
 		return itemService.findAll();
 	}
 
+	@GetMapping("/{id}") 
+	public @ResponseBody Item getCustomersByid(@PathVariable(value = "id") int itemId) {
+		return itemService.findByItemId(itemId);
+	}
+	
 	@DeleteMapping("/{id}")
 	public @ResponseBody void deleteItem(@PathVariable(value = "id") int itemId) {
 		itemService.delete(itemId);

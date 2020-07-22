@@ -14,9 +14,7 @@ export class MerchComponent implements OnInit {
     this.http.get('http://localhost:9025/api/items').toPromise().then(data => {
       if(data == null || data == undefined){
       } else{
-        // console.log(data);
         this.items = data;
-        console.log(this.items);
       }
     });
   }
