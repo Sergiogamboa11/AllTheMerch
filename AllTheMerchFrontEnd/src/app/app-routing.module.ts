@@ -12,12 +12,12 @@ const routes: Routes = [
     {path: 'item', component: ItemListingComponent},
     {path: 'merch', component: MerchComponent},
     {path: '', component: MerchComponent}, 
-    {path: '*', component: MerchComponent}
+    {path: '**', component: MerchComponent}
   ]},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
-  {path: '', redirectTo:'shop/merch', pathMatch:'prefix'}, 
-  {path: '*', redirectTo:'shop/merch', pathMatch:'prefix'}
+  {path: '', redirectTo:'shop', pathMatch:'prefix'}, 
+  {path: '**', redirectTo:'shop', pathMatch:'prefix'}
 ];
 
 @NgModule({
