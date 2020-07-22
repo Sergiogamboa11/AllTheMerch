@@ -1,10 +1,8 @@
-<ul ngbNav #nav="ngbNav" [activeId]="0" class="nav-tabs justify-content-center bg-dark">
-  <li [ngbNavItem]="1">
+<ul ngbNav #nav="ngbNav" [activeId]="1" class="nav-tabs justify-content-center bg-dark">
+  <li [ngbNavItem]="1" >
     <a ngbNavLink class="text-light bg-dark">Home</a>
     <ng-template ngbNavContent>
-      <p>
-        Home shop.
-      </p>
+
     </ng-template>
   </li>
   <li ngbDropdown class="nav-item">
@@ -20,32 +18,20 @@
   <li [ngbNavItem]="2">
     <a ngbNavLink class="text-light bg-dark">About</a>
     <ng-template ngbNavContent>
-      <p>
-        This online merch store does not make any real transactions.
-      </p>
+
     </ng-template>
   </li>
   <li ngbNavItem [disabled]="false" class="ml-auto">
     <a ngbNavLink class="text-light bg-dark">Logout</a>
     <ng-template ngbNavContent>
-      <p>
-        Some other button.
-      </p>
+
     </ng-template>
   </li>
 </ul>
 
 <div [ngbNavOutlet]="nav" class="mt-2"></div>
 
-<div class="item-container">
-  <div *ngFor="let item of items" style="width: 20%;">
-    <button class="button">
-      <img [src]="item.image" width="100%">
-      <p class="item-name">{{item.name}}</p>
-      <p>{{item.price}}</p>
-    </button>
-  </div>
-</div>
+<router-outlet></router-outlet>
 
-<p>Our shop is a work in progress</p>
+<!-- <p>Our shop is a work in progress</p> -->
 <button type="button" class="btn btn-outline-primary" routerLink="/login"> Login Page</button>

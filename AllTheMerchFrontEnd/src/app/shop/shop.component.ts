@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Item }from '../models/item.model';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-shop',
@@ -9,23 +8,9 @@ import { Item }from '../models/item.model';
 })
 export class ShopComponent implements OnInit {
 
-  public items;
-
-  constructor(private http: HttpClient) { }
-
-  getShopItems(){
-    this.http.get('http://localhost:9025/api/items').toPromise().then(data => {
-      if(data == null || data == undefined){
-      } else{
-        // console.log(data);
-        this.items = data;
-        console.log(this.items);
-      }
-    });
-  }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.getShopItems();
   }
 
 }

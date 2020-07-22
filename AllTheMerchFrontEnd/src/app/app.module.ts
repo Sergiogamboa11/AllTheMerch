@@ -10,6 +10,7 @@ import { RegisterComponent } from './register/register.component';
 import { ShopComponent } from './shop/shop.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ItemListingComponent } from './item-listing/item-listing.component';
+import { MerchComponent } from './merch/merch.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ItemListingComponent } from './item-listing/item-listing.component';
     LoginComponent,
     RegisterComponent,
     ShopComponent,
-    ItemListingComponent
+    ItemListingComponent,
+    MerchComponent,
   ],
   imports: [
     BrowserModule,
