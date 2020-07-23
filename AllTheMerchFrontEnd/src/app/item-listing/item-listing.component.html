@@ -1,18 +1,19 @@
-<div class="content" *ngIf="item">
-    <!-- <div class="row"> -->
-        <div class="column">
-            <h3>{{item.name}}</h3>
-            <img [src]="item.image" style="height: 500px;">
-        </div>
-        <div class="column">
-            <h5>Item Description</h5>
-            <p>{{item.description}}</p>
-            <p><b>Stock:</b> {{item.stock}}</p>
-            <p><b>Type:</b> {{item.type}}</p>
-            <p><b>Price:</b> ${{item.price}}</p>
-            <input type="number" min="0" [max]=item.stock> <br>
-            <button type="button" class="btn btn-outline-primary">Add to Cart</button>
-        </div>
-    <!-- </div> -->
-</div>
+<div class="grid" *ngIf="item">
+    <div></div>
+    <div class="grid-child">
 
+        <img [src]="item.image" style="height: 500px;">
+    </div>
+
+    <div class="grid-child">
+        <h3>{{item.name}}</h3>
+        <h5>Item Description</h5>
+        <p>{{item.description}}</p>
+        <p><b>Stock:</b> {{item.stock}}</p>
+        <p><b>Type:</b> {{item.type}}</p>
+        <p><b>Price:</b> ${{item.price}}</p>
+        <input type="number" placeholder="1" min="0" [max]=item.stock>
+        <button type="button" class="btn btn-outline-primary">Add to Cart</button>
+    </div>
+    <div></div>
+</div>
