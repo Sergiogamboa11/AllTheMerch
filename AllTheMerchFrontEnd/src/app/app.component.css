@@ -2,6 +2,39 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 36%;
+    width: 80%;
     height: auto;
   }
+
+.grid {
+    display: grid;
+    grid-template-columns: 33.3% 33.4% 33.3%;
+    grid-column-gap: 1em;
+    text-align: center;
+}
+
+
+.grid-child {
+  padding: 1em;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.submit {
+  border: none;
+  background-color: inherit;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.submit:hover { 
+  text-decoration: underline;
+}
+
+.cartImg {
+  width: 20%;
+}
