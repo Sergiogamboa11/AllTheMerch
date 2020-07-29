@@ -11,6 +11,7 @@ import { ShopComponent } from './shop/shop.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ItemListingComponent } from './item-listing/item-listing.component';
 import { MerchComponent } from './merch/merch.component';
+import { CartComponent } from './cart/cart.component';
 
 
 
@@ -22,6 +23,7 @@ import { MerchComponent } from './merch/merch.component';
     ShopComponent,
     ItemListingComponent,
     MerchComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,

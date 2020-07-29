@@ -5,7 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { ShopComponent } from './shop/shop.component';
 import { ItemListingComponent } from './item-listing/item-listing.component';
 import { MerchComponent } from './merch/merch.component';
-
+import { CartComponent } from './cart/cart.component';
 
 const routes: Routes = [
   {path: 'shop', component: ShopComponent, children:[
