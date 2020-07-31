@@ -9,7 +9,6 @@
 .grid {
     display: grid;
     grid-template-columns: 33.3% 33.4% 33.3%;
-    grid-column-gap: 1em;
     text-align: center;
 }
 
