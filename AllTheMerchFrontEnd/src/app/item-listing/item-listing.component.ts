@@ -30,9 +30,11 @@ export class ItemListingComponent implements OnInit {
 
     this.cartItem.cartId = 1; //This is hardcoded for now
     this.cartItem.quantity = this.registerForm.get("quantityForm").value;
+    console.log(this.cartItem.quantity);
     this.cartItem.itemId = this.itemId;
 
-    this.http.post('http://localhost:9025/api/cart/', this.cartItem).toPromise().then(data => {
+    this.http.post('http://localhost:9025/api/cartitems/', this.cartItem).toPromise().then(data => {
+      
       if(data == null || data == undefined){
       } else{
       }
