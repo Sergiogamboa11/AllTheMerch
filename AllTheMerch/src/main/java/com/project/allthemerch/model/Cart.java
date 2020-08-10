@@ -37,6 +37,9 @@ public class Cart {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
+	
+	public Cart() {
+	}
 
 	public Cart(int cartId, Customer customer) {
 		super();

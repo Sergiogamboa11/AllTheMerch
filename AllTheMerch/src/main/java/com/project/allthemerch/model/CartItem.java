@@ -32,6 +32,21 @@ public class CartItem {
 
 	@Column
 	private int quantity;
+	
+	public CartItem(int cartItemId, Cart cart, Item item, int quantity) {
+		super();
+		this.cartItemId = cartItemId;
+		this.cart = cart;
+		this.item = item;
+		this.quantity = quantity;
+	}
+
+	public CartItem(Cart cart, Item item, int quantity) {
+		super();
+		this.cart = cart;
+		this.item = item;
+		this.quantity = quantity;
+	}
 
 	public int getCartItemId() {
 		return cartItemId;
@@ -68,24 +83,9 @@ public class CartItem {
 	public CartItem() {
 	}
 
-	public CartItem(int cartItemId, Cart cart, Item item, int quantity) {
-		super();
-		this.cartItemId = cartItemId;
-		this.cart = cart;
-		this.item = item;
-		this.quantity = quantity;
-	}
-
-	public CartItem(Cart cart, Item item, int quantity) {
-		super();
-		this.cart = cart;
-		this.item = item;
-		this.quantity = quantity;
-	}
-
 	@Override
 	public String toString() {
-		return "CartItem [cartItemId=" + cartItemId + ", cart=" + cart + ", item=" + item + ", quantity=" + quantity
+		return "CartItem [cartItemId=" + cartItemId + ", cart=" + cart.getCartId() + ", item=" + item.getItemId() + ", quantity=" + quantity
 				+ "]";
 	}
 
