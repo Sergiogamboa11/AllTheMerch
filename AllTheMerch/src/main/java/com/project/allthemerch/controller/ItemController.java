@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.allthemerch.model.Item;
@@ -28,28 +27,28 @@ public class ItemController {
 	private ItemService itemService;
 	
 	@PostMapping
-	public @ResponseBody Item createItem(@RequestBody Item item) {
+	public Item createItem(@RequestBody Item item) {
 		item.setItemId(0);
 		return itemService.save(item);
 	}
 	
 	@GetMapping
-	public @ResponseBody List<Item> getItems() {
+	public List<Item> getItems() {
 		return itemService.findAll();
 	}
 
 	@GetMapping("/{id}") 
-	public @ResponseBody Item getCustomersByid(@PathVariable(value = "id") int itemId) {
+	public Item getCustomersByid(@PathVariable(value = "id") int itemId) {
 		return itemService.findByItemId(itemId);
 	}
 	
 	@DeleteMapping("/{id}")
-	public @ResponseBody void deleteItem(@PathVariable(value = "id") int itemId) {
+	public void deleteItem(@PathVariable(value = "id") int itemId) {
 		itemService.delete(itemId);
 	}
 	
 	@PutMapping("/{id}")
-	public @ResponseBody ResponseEntity<Item> putItem(@RequestBody Item item, @PathVariable(value = "id") int itemId) {
+	public ResponseEntity<Item> putItem(@RequestBody Item item, @PathVariable(value = "id") int itemId) {
 		System.out.println(item.getItemId());
 		if(item.getItemId() > 0 && item.getItemId() != itemId) {
 			return new ResponseEntity<>(null, HttpStatus.OK);

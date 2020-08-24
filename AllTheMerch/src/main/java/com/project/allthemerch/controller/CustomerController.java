@@ -28,23 +28,23 @@ public class CustomerController {
 	private CustomerService customerService;
 	
 	@PostMapping
-	public @ResponseBody Customer createCustomer(@RequestBody Customer customer) {
+	public Customer createCustomer(@RequestBody Customer customer) {
 		customer.setCustomerId(0);
 		return customerService.save(customer);
 	}
 	
 	@GetMapping
-	public @ResponseBody List<Customer> getCustomers(){
+	public List<Customer> getCustomers(){
 		return customerService.findAll();
 	}
 	
 	@GetMapping("/{id}") 
-	public @ResponseBody Customer getCustomersByid(@PathVariable(value = "id") int customerId) {
+	public Customer getCustomersByid(@PathVariable(value = "id") int customerId) {
 		return customerService.findByCustomerId(customerId);
 	}
 	
 	@DeleteMapping("/{id}")
-	public @ResponseBody void deleteCustomer(@PathVariable(value = "id") int customerId) {
+	public void deleteCustomer(@PathVariable(value = "id") int customerId) {
 		customerService.delete(customerId);
 	}
 	

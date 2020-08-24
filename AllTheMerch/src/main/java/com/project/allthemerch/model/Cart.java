@@ -1,13 +1,18 @@
 package com.project.allthemerch.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "Cart")
@@ -21,6 +26,10 @@ public class Cart {
 	@OneToOne
 	@JoinColumn (name = "customer_id")
 	private Customer customer;
+	
+	@OneToMany(mappedBy = "cart")
+	@JsonManagedReference
+    private List<CartItem> cartItems;
 
 	public int getCartId() {
 		return cartId;

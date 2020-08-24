@@ -11,6 +11,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "Cart_Item")
 public class CartItem {
@@ -24,14 +26,19 @@ public class CartItem {
 
 	@ManyToOne
 	@JoinColumn(name = "cart_id")
+	@JsonBackReference
 	private Cart cart;
 
 	@OneToOne
 	@JoinColumn(name = "item_id")
+//	@JsonManagedReference
 	private Item item;
 
 	@Column
 	private int quantity;
+	
+	public CartItem() {
+	}
 	
 	public CartItem(int cartItemId, Cart cart, Item item, int quantity) {
 		super();
@@ -80,12 +87,9 @@ public class CartItem {
 		this.quantity = quantity;
 	}
 
-	public CartItem() {
-	}
-
 	@Override
 	public String toString() {
-		return "CartItem [cartItemId=" + cartItemId + ", cart=" + cart.getCartId() + ", item=" + item.getItemId() + ", quantity=" + quantity
+		return "CartItem [cartItemId=" + cartItemId + ", cart=" + cart + ", item=" + item + ", quantity=" + quantity
 				+ "]";
 	}
 
