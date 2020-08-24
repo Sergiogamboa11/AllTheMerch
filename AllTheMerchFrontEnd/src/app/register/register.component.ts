@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router, ɵangular_packages_router_router_e } from '@angular/router';
 import { Customer } from '../models/customer.model';
+import { CustomerService } from '../services/customer.service';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +17,7 @@ export class RegisterComponent implements OnInit {
   registerForm = new FormGroup({
     usernameForm: new FormControl(''),
     passwordForm: new FormControl(''),
-    passwordConfirmForm: new FormControl(''),
+    emailForm: new FormControl(''),
     firstNameForm: new FormControl(''),
     middleNameForm: new FormControl(''),
     lastNameForm: new FormControl(''),
@@ -35,17 +36,18 @@ export class RegisterComponent implements OnInit {
     this.customer.state = this.registerForm.get("stateForm").value;
     this.customer.username = this.registerForm.get("usernameForm").value;
     this.customer.zip = this.registerForm.get("zipForm").value;
-    this.http.post('http://localhost:9025/api/customers', this.customer).toPromise().then(data => {
-      if(data == null || data == undefined){
-        // this.invalidLogin = true;
-      } else{
-        // console.log(data);
+
+    this.customerService.post(this.customer)
+    .subscribe(response => {
+      if (response == null || response == undefined) {
+      } else {
+        console.log(response);
         this.router.navigateByUrl('/login');
       }
     });
   }
 
-  constructor(private router: Router, private http: HttpClient) { }
+  constructor(private router: Router, private customerService: CustomerService) { }
 
   ngOnInit(): void {
   }

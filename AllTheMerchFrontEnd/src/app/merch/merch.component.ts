@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { ItemService } from '../services/item.service';
 
 @Component({
   selector: 'app-merch',
@@ -10,16 +10,15 @@ export class MerchComponent implements OnInit {
 
   public items;
 
-  getShopItems(){
-    this.http.get('http://localhost:9025/api/items').toPromise().then(data => {
-      if(data == null || data == undefined){
-      } else{
-        this.items = data;
-      }
-    });
-  }
+  constructor(private itemService: ItemService) { }
 
-  constructor(private http: HttpClient) { }
+  getShopItems() {
+    this.itemService.getItems()
+      .subscribe(response => {
+        console.log(response);
+        this.items = response;
+      });
+  }
 
   ngOnInit(): void {
     this.getShopItems();
