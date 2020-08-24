@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.allthemerch.model.Artist;
@@ -28,28 +27,28 @@ public class ArtistController {
 	private ArtistService artistService;
 	
 	@PostMapping
-	public @ResponseBody Artist createArtist(@RequestBody Artist artist) {
+	public Artist createArtist(@RequestBody Artist artist) {
 		artist.setArtistId(0);
 		return artistService.save(artist);
 	}
 	
 	@GetMapping
-	public @ResponseBody List<Artist> getArtists(){
+	public List<Artist> getArtists(){
 		return artistService.findAll();
 	}
 	
 	@GetMapping("/{id}") 
-	public @ResponseBody Artist getArtistById(@PathVariable(value = "id") int artistId) {
+	public Artist getArtistById(@PathVariable(value = "id") int artistId) {
 		return artistService.findByArtistId(artistId);
 	}
 	
 	@DeleteMapping("/{id}")
-	public @ResponseBody void deleteArtist(@PathVariable(value = "id") int artistId) {
+	public void deleteArtist(@PathVariable(value = "id") int artistId) {
 		artistService.delete(artistId);
 	}
 	
 	@PutMapping("/{id}")
-	public @ResponseBody ResponseEntity<Artist> putArtist(@RequestBody Artist artist, @PathVariable(value = "id") int artistId) {
+	public ResponseEntity<Artist> putArtist(@RequestBody Artist artist, @PathVariable(value = "id") int artistId) {
 		System.out.println(artist.getArtistId());
 		if(artist.getArtistId() > 0 && artist.getArtistId() != artistId) {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);

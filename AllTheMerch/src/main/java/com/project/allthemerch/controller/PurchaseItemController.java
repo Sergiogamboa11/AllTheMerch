@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.allthemerch.model.PurchaseItem;
@@ -28,28 +27,28 @@ public class PurchaseItemController {
 	private PurchaseItemService purchaseItemService;
 	
 	@PostMapping
-	public @ResponseBody PurchaseItem createPurchaseItem(@RequestBody PurchaseItem purchaseItem) {
+	public PurchaseItem createPurchaseItem(@RequestBody PurchaseItem purchaseItem) {
 		purchaseItem.setPurchaseItemId(0);
 		return purchaseItemService.save(purchaseItem);
 	}
 	
 	@GetMapping
-	public @ResponseBody List<PurchaseItem> getPurchaseItems(){
+	public List<PurchaseItem> getPurchaseItems(){
 		return purchaseItemService.findAll();
 	}
 	
 	@GetMapping("/{id}") 
-	public @ResponseBody PurchaseItem getPurchaseItemById(@PathVariable(value = "id") int purchaseItemId) {
+	public PurchaseItem getPurchaseItemById(@PathVariable(value = "id") int purchaseItemId) {
 		return purchaseItemService.findByPurchaseItemId(purchaseItemId);
 	}
 	
 	@DeleteMapping("/{id}")
-	public @ResponseBody void deletePurchaseItem(@PathVariable(value = "id") int purchaseItemId) {
+	public void deletePurchaseItem(@PathVariable(value = "id") int purchaseItemId) {
 		purchaseItemService.delete(purchaseItemId);
 	}
 	
 	@PutMapping("/{id}")
-	public @ResponseBody ResponseEntity<PurchaseItem> purPurchaseItem(@RequestBody PurchaseItem purchaseItem, @PathVariable(value = "id") int purchaseItemId) {
+	public ResponseEntity<PurchaseItem> purPurchaseItem(@RequestBody PurchaseItem purchaseItem, @PathVariable(value = "id") int purchaseItemId) {
 		System.out.println(purchaseItem.getPurchaseItemId());
 		if(purchaseItem.getPurchaseItemId() > 0 &&purchaseItem.getPurchaseItemId() != purchaseItemId) {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.allthemerch.model.CartItem;
@@ -28,28 +27,28 @@ public class CartItemController {
 	private CartItemService cartItemService;
 	
 	@PostMapping
-	public @ResponseBody CartItem createCartItem(@RequestBody CartItem cartItem) {
+	public CartItem createCartItem(@RequestBody CartItem cartItem) {
 		cartItem.setCartItemId(0);
 		return cartItemService.save(cartItem);
 	}
 	
 	@GetMapping
-	public @ResponseBody List<CartItem> getCartItems(){
+	public List<CartItem> getCartItems(){
 		return cartItemService.findAll();
 	}
 	
 	@GetMapping("/{id}") 
-	public @ResponseBody CartItem getCartItemById(@PathVariable(value = "id") int cartItemId) {
+	public CartItem getCartItemById(@PathVariable(value = "id") int cartItemId) {
 		return cartItemService.findByCartItemId(cartItemId);
 	}
 	
 	@DeleteMapping("/{id}")
-	public @ResponseBody void deleteCartItem(@PathVariable(value = "id") int cartItemId) {
+	public void deleteCartItem(@PathVariable(value = "id") int cartItemId) {
 		cartItemService.delete(cartItemId);
 	}
 	
 	@PutMapping("/{id}")
-	public @ResponseBody ResponseEntity<CartItem> putCartItem(@RequestBody CartItem cartItem, @PathVariable(value = "id") int cartItemId) {
+	public ResponseEntity<CartItem> putCartItem(@RequestBody CartItem cartItem, @PathVariable(value = "id") int cartItemId) {
 		System.out.println(cartItem.getCartItemId());
 		if(cartItem.getCartItemId() > 0 && cartItem.getCartItemId() != cartItemId) {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);

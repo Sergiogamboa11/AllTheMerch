@@ -11,8 +11,16 @@
         <p><b>Stock:</b> {{item.stock}}</p>
         <p><b>Type:</b> {{item.type}}</p>
         <p><b>Price:</b> ${{item.price}}</p>
-        <input type="number" placeholder="1" min="0" [max]=item.stock>
-        <button type="button" class="btn btn-outline-primary">Add to Cart</button>
+
+        <form [formGroup]="registerForm">
+            <div class="form-group col-md-2 center" >
+                <label for="inputQuantity"><b>Quantity:</b></label>
+                <input type="number" formControlName="quantityForm" class="form-control" id="inputQuantity" placeholder="1" min="1" [max]=item.stock>
+            </div>
+            <br>
+            <button type="button" class="btn btn-primary mr-2" (click)="addToCart()">Add To Cart</button>
+          </form>
+
     </div>
-    <div></div>
+
 </div>

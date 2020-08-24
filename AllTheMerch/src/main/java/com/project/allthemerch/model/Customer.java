@@ -15,12 +15,10 @@ public class Customer {
 	@Id
 	@Column(name = "customer_id")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,
-	generator = "customer_seq"
-	)
+	generator = "customer_seq")
 	@SequenceGenerator(
 	    name = "customer_seq",
-	    initialValue=3
-	)
+	    initialValue=3)
 	private int customerId;
 	
 	@Column

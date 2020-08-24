@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.allthemerch.model.Purchase;
@@ -28,28 +27,28 @@ public class PurchaseController {
 	private PurchaseService purchaseService;
 	
 	@PostMapping
-	public @ResponseBody Purchase createPurchase(@RequestBody Purchase purchase) {
+	public Purchase createPurchase(@RequestBody Purchase purchase) {
 		purchase.setPurchaseId(0);
 		return purchaseService.save(purchase);
 	}
 	
 	@GetMapping
-	public @ResponseBody List<Purchase> getPurchases(){
+	public List<Purchase> getPurchases(){
 		return purchaseService.findAll();
 	}
 	
 	@GetMapping("/{id}") 
-	public @ResponseBody Purchase getPurchaseById(@PathVariable(value = "id") int purchaseId) {
+	public Purchase getPurchaseById(@PathVariable(value = "id") int purchaseId) {
 		return purchaseService.findByPurchaseId(purchaseId);
 	}
 	
 	@DeleteMapping("/{id}")
-	public @ResponseBody void deletePurchase(@PathVariable(value = "id") int purchaseId) {
+	public void deletePurchase(@PathVariable(value = "id") int purchaseId) {
 		purchaseService.delete(purchaseId);
 	}
 	
 	@PutMapping("/{id}")
-	public @ResponseBody ResponseEntity<Purchase> putPurchase(@RequestBody Purchase purchase, @PathVariable(value = "id") int purchaseId) {
+	public ResponseEntity<Purchase> putPurchase(@RequestBody Purchase purchase, @PathVariable(value = "id") int purchaseId) {
 		System.out.println(purchase.getPurchaseId());
 		if(purchase.getPurchaseId() > 0 && purchase.getPurchaseId() != purchaseId) {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);

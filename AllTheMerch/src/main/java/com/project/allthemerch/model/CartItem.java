@@ -8,26 +8,52 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "Cart_Item")
 public class CartItem {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, 
+	generator = "cart_item_seq")
+	@SequenceGenerator(name = "cart_item_seq", 
+	initialValue = 2)
 	private int cartItemId;
-	
+
 	@ManyToOne
-	@JoinColumn(name="cart_id")
+	@JoinColumn(name = "cart_id")
+	@JsonBackReference
 	private Cart cart;
-	
+
 	@OneToOne
 	@JoinColumn(name = "item_id")
+//	@JsonManagedReference
 	private Item item;
-	
+
 	@Column
 	private int quantity;
+	
+	public CartItem() {
+	}
+	
+	public CartItem(int cartItemId, Cart cart, Item item, int quantity) {
+		super();
+		this.cartItemId = cartItemId;
+		this.cart = cart;
+		this.item = item;
+		this.quantity = quantity;
+	}
+
+	public CartItem(Cart cart, Item item, int quantity) {
+		super();
+		this.cart = cart;
+		this.item = item;
+		this.quantity = quantity;
+	}
 
 	public int getCartItemId() {
 		return cartItemId;
@@ -36,7 +62,7 @@ public class CartItem {
 	public void setCartItemId(int cartItemId) {
 		this.cartItemId = cartItemId;
 	}
-	
+
 	public Cart getCart() {
 		return cart;
 	}
@@ -61,25 +87,10 @@ public class CartItem {
 		this.quantity = quantity;
 	}
 
-	public CartItem(int cartItemId, Cart cart, Item item, int quantity) {
-		super();
-		this.cartItemId = cartItemId;
-		this.cart = cart;
-		this.item = item;
-		this.quantity = quantity;
-	}
-
-	public CartItem(Cart cart, Item item, int quantity) {
-		super();
-		this.cart = cart;
-		this.item = item;
-		this.quantity = quantity;
-	}
-
 	@Override
 	public String toString() {
 		return "CartItem [cartItemId=" + cartItemId + ", cart=" + cart + ", item=" + item + ", quantity=" + quantity
 				+ "]";
 	}
-	
+
 }
