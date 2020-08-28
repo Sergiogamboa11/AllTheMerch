@@ -15,7 +15,7 @@
         <form [formGroup]="registerForm">
             <div class="form-group col-md-2 center" >
                 <label for="inputQuantity"><b>Quantity:</b></label>
-                <input type="number" formControlName="quantityForm" class="form-control" id="inputQuantity" placeholder="1" min="1" [max]=item.stock>
+                <input type="number" formControlName="quantityForm" class="form-control" id="inputQuantity" min="1" [max]=item.stock>
             </div>
             <br>
             <button type="button" class="btn btn-primary mr-2" (click)="addToCart()">Add To Cart</button>

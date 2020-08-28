@@ -20,7 +20,7 @@ export class ItemListingComponent implements OnInit {
   private cartItem: CartItem = new CartItem();
 
   registerForm = new FormGroup({
-    quantityForm: new FormControl('')
+    quantityForm: new FormControl('1')
   });
 
   constructor(private router: Router, private itemService: ItemService, private cartItemService: CartItemService) { }
@@ -31,17 +31,14 @@ export class ItemListingComponent implements OnInit {
   }
 
   addToCart() {
-
+    this.cartItem.quantity = this.registerForm.get("quantityForm").value;
+    
     this.cartItem.cart = new Cart();
     this.cartItem.cart.cartId = 1; //This is hardcoded for now
-    this.cartItem.quantity = this.registerForm.get("quantityForm").value;
-    if (this.cartItem.quantity == undefined || this.cartItem.quantity < 1){
-      this.cartItem.quantity = 1;
-    }
 
     this.cartItem.item = new Item();
     this.cartItem.item.itemId = this.itemId;
-    console.log(this.cartItem);
+    // console.log(this.cartItem);
 
     this.cartItemService.post(this.cartItem)
       .subscribe(response => {
