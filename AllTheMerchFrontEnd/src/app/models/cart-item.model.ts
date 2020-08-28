@@ -1,5 +1,8 @@
+import { Item } from './item.model';
+import { Cart } from './cart.model';
+
 export class CartItem {
-    cartId: number;
-    itemId: number;
+    cart: Cart;
+    item: Item;
     quantity: number;
   }

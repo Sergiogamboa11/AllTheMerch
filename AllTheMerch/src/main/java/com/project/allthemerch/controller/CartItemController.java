@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.project.allthemerch.model.CartItem;
 import com.project.allthemerch.service.CartItemService;
+import com.project.allthemerch.service.CartService;
+import com.project.allthemerch.service.ItemService;
 
 @RestController
 @RequestMapping("/api/cartitems")
@@ -26,9 +28,22 @@ public class CartItemController {
 	@Autowired
 	private CartItemService cartItemService;
 	
+	@Autowired
+	private ItemService itemService;
+	
+	@Autowired
+	private CartService cartService;
+	
 	@PostMapping
 	public CartItem createCartItem(@RequestBody CartItem cartItem) {
 		cartItem.setCartItemId(0);
+//		System.out.println(cartItem.toString());
+		if(cartItem.getCart().getCartId() > 0) {
+			cartItem.setCart(cartService.findByCartId(cartItem.getCart().getCartId()));
+		}
+		if(cartItem.getItem().getItemId() > 0){
+			cartItem.setItem(itemService.findByItemId(cartItem.getItem().getItemId()));
+		}
 		return cartItemService.save(cartItem);
 	}
 	

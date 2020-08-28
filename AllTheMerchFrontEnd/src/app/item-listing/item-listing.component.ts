@@ -5,6 +5,8 @@ import { CartItem } from '../models/cart-item.model';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ItemService } from '../services/item.service';
 import { CartItemService } from '../services/cart-item.service';
+import { Cart } from '../models/cart.model';
+import { Item } from '../models/item.model';
 
 @Component({
   selector: 'app-item-listing',
@@ -30,11 +32,15 @@ export class ItemListingComponent implements OnInit {
 
   addToCart() {
 
-    this.cartItem.cartId = 1; //This is hardcoded for now
+    this.cartItem.cart = new Cart();
+    this.cartItem.cart.cartId = 1; //This is hardcoded for now
     this.cartItem.quantity = this.registerForm.get("quantityForm").value;
-    if (this.cartItem.quantity == undefined || this.cartItem.quantity < 1)
+    if (this.cartItem.quantity == undefined || this.cartItem.quantity < 1){
       this.cartItem.quantity = 1;
-    this.cartItem.itemId = this.itemId;
+    }
+
+    this.cartItem.item = new Item();
+    this.cartItem.item.itemId = this.itemId;
     console.log(this.cartItem);
 
     this.cartItemService.post(this.cartItem)
